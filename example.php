@@ -19,3 +19,18 @@ use App\Model\Student as Student;
 //   echo "Card no: {$card->card_no} is belongs to {$card->student->first_name}\n";
 //   // print_r($card->student);
 // }
+
+
+/*
+SELECT * FROM courses;
+*/
+$courses = App\Model\Course::all();
+foreach ($courses as $course) {
+  echo "{$course->no} {$course->title}\n";
+  /*
+  SELECT * FROM sections WHERE courses_id = ??
+  */
+  foreach ($course->sections as $section) {
+    echo "Section: {$section->lecture_no}/{$section->laboratory_no}\n";
+  }
+}
