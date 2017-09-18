@@ -32,5 +32,9 @@ foreach ($courses as $course) {
   */
   foreach ($course->sections as $section) {
     echo "Section: {$section->lecture_no}/{$section->laboratory_no}\n";
+
+    foreach ($section->instructors as $instructor) {
+      echo "{$instructor->first_name}\n";
+    }
   }
 }
