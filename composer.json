@@ -4,7 +4,7 @@
     },
     "autoload": {
         "classmap" : [
-            "models"
+            "Models/"
         ]
     }
 }
