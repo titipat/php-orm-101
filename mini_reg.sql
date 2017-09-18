@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 18, 2017 at 10:02 AM
+-- Generation Time: Sep 18, 2017 at 11:18 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -18,9 +18,15 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+DROP SCHEMA IF EXISTS mini_reg;
+CREATE SCHEMA mini_reg COLLATE = utf8_general_ci;
+USE mini_reg;
+
 --
 -- Database: `mini_reg`
 --
+CREATE DATABASE IF NOT EXISTS `mini_reg` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `mini_reg`;
 
 -- --------------------------------------------------------
 
@@ -111,6 +117,25 @@ INSERT INTO `section_enrollments` (`sections_id`, `students_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `section_instructors`
+--
+
+CREATE TABLE `section_instructors` (
+  `sections_id` int(11) NOT NULL,
+  `lecturers_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `section_instructors`
+--
+
+INSERT INTO `section_instructors` (`sections_id`, `lecturers_id`) VALUES
+(1, 1),
+(2, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -184,6 +209,13 @@ ALTER TABLE `section_enrollments`
   ADD KEY `fk_sections_has_students_sections1_idx` (`sections_id`);
 
 --
+-- Indexes for table `section_instructors`
+--
+ALTER TABLE `section_instructors`
+  ADD KEY `section_instructors_fk1` (`lecturers_id`),
+  ADD KEY `section_instructors_fk2` (`sections_id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -212,6 +244,13 @@ ALTER TABLE `sections`
 ALTER TABLE `section_enrollments`
   ADD CONSTRAINT `fk_sections_has_students_sections1` FOREIGN KEY (`sections_id`) REFERENCES `sections` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_sections_has_students_students1` FOREIGN KEY (`students_id`) REFERENCES `students` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `section_instructors`
+--
+ALTER TABLE `section_instructors`
+  ADD CONSTRAINT `section_instructors_fk1` FOREIGN KEY (`lecturers_id`) REFERENCES `lecturers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `section_instructors_fk2` FOREIGN KEY (`sections_id`) REFERENCES `sections` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `student_cards`
