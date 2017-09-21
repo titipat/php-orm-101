@@ -1,5 +1,7 @@
 # php-orm-101
 
+[![StyleCI](https://styleci.io/repos/103902364/shield?branch=master)](https://styleci.io/repos/103902364)
+
 ## Installation
 
 ```
