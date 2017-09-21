@@ -26,15 +26,15 @@ SELECT * FROM courses;
 */
 $courses = App\Model\Course::all();
 foreach ($courses as $course) {
-  echo "{$course->no} {$course->title}\n";
-  /*
-  SELECT * FROM sections WHERE courses_id = ??
-  */
-  foreach ($course->sections as $section) {
-    echo "Section: {$section->lecture_no}/{$section->laboratory_no}\n";
+    echo "{$course->no} {$course->title}\n";
+    /*
+    SELECT * FROM sections WHERE courses_id = ??
+    */
+    foreach ($course->sections as $section) {
+        echo "Section: {$section->lecture_no}/{$section->laboratory_no}\n";
 
-    foreach ($section->instructors as $instructor) {
-      echo "{$instructor->first_name}\n";
+        foreach ($section->instructors as $instructor) {
+            echo "{$instructor->first_name}\n";
+        }
     }
-  }
 }
