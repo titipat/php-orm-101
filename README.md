@@ -14,5 +14,6 @@ php composer.phar install
 
 ## References
 
+* [**illuminate/database**](https://github.com/illuminate/database)
 * [Eloquent: Getting Started](https://laravel.com/docs/5.5/eloquent)
 * [Eloquent: Relationships](https://laravel.com/docs/5.5/eloquent-relationships)
